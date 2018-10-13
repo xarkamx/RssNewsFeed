@@ -12,8 +12,7 @@ import {
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import { Anchor } from '../components/Anchor';
-import { FullScreenCards } from '../components/Cards/FullScreenCards';
+import { FullScreenCard } from '../components/Cards/FullScreenCard';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -24,7 +23,10 @@ export default class HomeScreen extends React.Component {
     return (
       <SafeAreaView  style={styles.container}>
         <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <FullScreenCards/>
+          <FullScreenCard
+            img="https://dummyimage.com/400x800/000/fff"
+            text="Hola" 
+          />
         </ScrollView>
 
         <View style={styles.tabBarInfoContainer}>
