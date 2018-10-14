@@ -1,18 +1,15 @@
 import React from 'react';
 import {
-  Image,
   Platform,
-  ScrollView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
-  SafeAreaView ,
+  SafeAreaView,
 } from 'react-native';
 import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
-import { FullScreenCard } from '../components/Cards/FullScreenCard';
+import { NewsLists } from '../components/NewsFeeds/NewsLists';
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -21,14 +18,8 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
-      <SafeAreaView  style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
-          <FullScreenCard
-            img="https://dummyimage.com/400x800/000/fff"
-            text="Hola" 
-          />
-        </ScrollView>
-
+      <SafeAreaView style={styles.container}>
+        <NewsLists />
         <View style={styles.tabBarInfoContainer}>
           <Text style={styles.tabBarInfoText}>This is a tab bar. You can edit it in:</Text>
 

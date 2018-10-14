@@ -1,33 +1,41 @@
 import React from 'react';
 import {
     Image,
-    Platform,
-    ScrollView,
-    StyleSheet,
     Text,
-    TouchableOpacity,
+    WebView,
     Dimensions,
     View,
-  } from 'react-native';
-
+} from 'react-native';
+import style from './styles/style.json';
 /**
  * @description Create card fullscreen size
  * @param {string} src
  * @param {string} text 
  */
 export class FullScreenCard extends React.Component {
-    screenSize() {
-        return {width: Dimensions.get('window').width, height: Dimensions.get('window').height}
+    constructor() {
+        super();
+        this.state = { demo: "esto es un" };
     }
-    render () {
-        const {img,text} = this.props;
+    screenSize() {
+        return { width: Dimensions.get('window').width, height: Dimensions.get('window').height }
+    }
+    render() {
+        const { img, text, title } = this.props;
         return (<View style={this.screenSize()}>
-            <Image 
-                source={{uri: img}}
-                style={{width: "100%", height: "80%"}}
-                />
-            <View>
-                <Text>{text}</Text>
+            <Image
+                source={{ uri: img }}
+                style={{
+                    flex: 1,
+                    position: 'absolute',
+                    width: '100%',
+                    height: '100%',
+                    justifyContent: 'center',
+                }}
+            />
+            <View style={style.tabBarInfoContainer}>
+                <Text style={style.title}>{title}</Text>
+                <Text style={{ fontSize: 15, textAlign: "justify", color: "white" }}>{text}</Text>
             </View>
         </View>);
     }
