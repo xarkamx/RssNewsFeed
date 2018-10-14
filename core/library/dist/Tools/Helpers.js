@@ -20,6 +20,31 @@ export class Helpers {
             }
         }
     }
+    stripTags(text) {
+        text = text.replace(/<p>/gm, '');
+        text = text.replace(/<\/p>/gm, '\n');
+        text = text.replace(/<.*?>/gm, '');
+        text = text.replace(/&hellip;/gi, '...');
+        text = text.replace(/&#8220;/gi, "'");
+        text = text.replace(/&#8221;/gi, "'");
+        text = text.replace(/&#8216;/gi, "'");
+        text = text.replace(/&#8217;/gi, "'");
+        text = text.replace(/&nbsp;/gi, "\n");
+
+        return text;
+    }
+    htmlImageScrapper(html) {
+        let results = html.match(/src="[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?"/gi);
+        let img = [];
+        for (let index in results) {
+            let url = results[index].replace(/src=/gi, '');
+            url = url.replace(/"/gi, '');
+            url = (url.match(/http/) == null) ? "http:" + url : url;
+            img.push({ url });
+        }
+
+        return img;
+    }
     fileTo64(file) {
         const reader = new FileReader();
         reader.readAsDataURL(file);

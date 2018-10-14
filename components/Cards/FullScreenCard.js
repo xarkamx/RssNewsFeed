@@ -6,7 +6,8 @@ import {
     Dimensions,
     View,
 } from 'react-native';
-import style from './styles/style.json';
+import { style } from './styles/style.js';
+import { CleanText } from '../Texts/CleanText.js';
 /**
  * @description Create card fullscreen size
  * @param {string} src
@@ -18,7 +19,11 @@ export class FullScreenCard extends React.Component {
         this.state = { demo: "esto es un" };
     }
     screenSize() {
-        return { width: Dimensions.get('window').width, height: Dimensions.get('window').height }
+        return {
+            width: Dimensions.get('window').width - 5,
+            height: Dimensions.get('window').height / 3,
+            margin: 2.5
+        }
     }
     render() {
         const { img, text, title } = this.props;
@@ -31,11 +36,12 @@ export class FullScreenCard extends React.Component {
                     width: '100%',
                     height: '100%',
                     justifyContent: 'center',
+                    resizeMode: "cover"
                 }}
             />
             <View style={style.tabBarInfoContainer}>
-                <Text style={style.title}>{title}</Text>
-                <Text style={{ fontSize: 15, textAlign: "justify", color: "white" }}>{text}</Text>
+                <CleanText style={{ fontSize: 25, ...style.cardWhiteText }} text={title}></CleanText>
+                <CleanText style={{ fontSize: 14, ...style.cardWhiteText }} text={text}></CleanText>
             </View>
         </View>);
     }

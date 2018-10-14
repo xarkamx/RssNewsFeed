@@ -1,4 +1,4 @@
-{
+export const style = {
     "tabBarInfoContainer": {
         "position": "absolute",
         "bottom": 0,
@@ -10,17 +10,14 @@
         "flex": 1,
         "flexDirection": "column"
     },
-    "title": {
+    "cardWhiteText": {
         "textShadowColor": "rgba(0, 0, 0, 0.75)",
         "textShadowOffset": {
             "width": -1,
             "height": 1
         },
         "textShadowRadius": 10,
-
-        "fontSize": 25,
         "textAlign": "justify",
         "color": "white"
-
     }
 }
